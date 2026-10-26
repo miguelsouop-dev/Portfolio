@@ -1,0 +1,44 @@
+<section id="skills" class="py-24 px-8 md:px-16 lg:px-24 bg-canvas relative">
+  <div class="max-w-7xl mx-auto">
+    <!-- En-tête de section -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+      <h2
+        class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-accent transition-colors duration-300">
+        {{ skillsContent().title }}
+      </h2>
+      <p class="text-gray-400 text-sm max-w-sm text-right">
+        {{ skillsContent().description }}
+      </p>
+    </div>
+
+    <!-- Catégories de compétences -->
+    @for (category of skillCategories(); track category.title.en; let last = $last) {
+    <div class="pb-8 mb-8 border-white/5" [class.border-b]="!last">
+      <h3 class="text-base font-semibold mb-4 text-white/90">
+        {{ category.title[langService.currentLang()] }}
+      </h3>
+
+      <div class="flex flex-wrap gap-4 md:gap-6">
+        @for (skill of category.skills; track skill.name) {
+        <div [style.--hover-color]="skill.brandColor"
+          class="skill-card group relative w-20 h-20 md:w-24 md:h-24 bg-surface border border-white/10 rounded-xl flex flex-col items-center justify-center p-3 cursor-pointer transition-colors duration-300">
+          @if (hasIconFailed(skill.iconUrl)) {
+          <span
+            class="skill-card__fallback w-8 h-8 md:w-10 md:h-10 mb-2 flex items-center justify-center rounded-lg bg-white/5 font-bold text-sm md:text-base transition-colors">
+            {{ iconFallbackLabel(skill.name) }}
+          </span>
+          } @else {
+          <img [src]="skill.iconUrl" [alt]="skill.name" (error)="onIconError(skill.iconUrl)" loading="lazy"
+            class="w-8 h-8 md:w-10 md:h-10 object-contain mb-2" />
+          }
+          <span
+            class="text-[10px] md:text-xs text-gray-400 group-hover:text-white font-medium text-center truncate w-full transition-colors">
+            {{ skill.name }}
+          </span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</section>

@@ -14,10 +14,19 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render the main portfolio sections', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, portofolio');
+
+    // Le hero affiche le nom du propriétaire du portfolio
+    expect(compiled.querySelector('h1')?.textContent).toContain('Miguel Souop');
+    // Les sections clés sont bien montées
+    expect(compiled.querySelector('#about')).toBeTruthy();
+    expect(compiled.querySelector('#skills')).toBeTruthy();
+    expect(compiled.querySelector('#projects')).toBeTruthy();
+    expect(compiled.querySelector('#experience')).toBeTruthy();
+    expect(compiled.querySelector('#contact')).toBeTruthy();
+    expect(compiled.querySelector('app-footer')).toBeTruthy();
   });
 });

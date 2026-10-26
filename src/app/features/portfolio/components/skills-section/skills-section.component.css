@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.skill-card {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  border-color: var(--hover-color);
+  box-shadow: 0 4px 20px -2px var(--hover-color);
+}
+
+.skill-card__fallback {
+  color: var(--hover-color);
+}

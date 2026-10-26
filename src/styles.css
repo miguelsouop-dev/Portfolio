@@ -1,3 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+/*
+ * Tokens Tailwind alimentés par la palette centralisée
+ * (src/app/data/portofolio-colors.constants.ts).
+ * Les valeurs sont injectées dans le document par le PaletteService.
+ */
+@theme {
+  --color-accent: var(--accent-color);
+  --color-accent-muted: var(--accent-color-muted);
+  --color-canvas: var(--palette-canvas);
+  --color-surface: var(--palette-surface);
+  --color-whatsapp: var(--palette-whatsapp);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--palette-canvas);
+    color: var(--palette-ink);
+    overflow-x: hidden;
+  }
+}
+
+body.theme-light {
+  color-scheme: light;
+}
+
+/* Utilitaires réutilisables */
+.shadow-accent {
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.35);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--palette-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--palette-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}

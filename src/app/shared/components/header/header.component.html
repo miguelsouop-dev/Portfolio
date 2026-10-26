@@ -1,0 +1,95 @@
+<header
+    class="fixed top-0 left-0 w-full z-50 bg-canvas/90 backdrop-blur-md border-b border-white/5 px-8 py-4 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+        <!-- Initiales (Logo) -->
+        <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-accent transition-colors">
+            MS
+        </a>
+
+        <!-- Navigation principale (Centre) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+            @for (item of navItems; track item.id) {
+            <button (click)="scrollTo(item.id)"
+                class="hover:text-white transition-colors cursor-pointer">{{ item.label[currentLang] }}</button>
+            }
+        </nav>
+
+        <!-- Contrôles Droite : Onglets Rôles + Langue + Thème -->
+        <div class="flex items-center gap-3">
+
+            <!-- Conteneur d'onglets de Rôles -->
+            <div
+                class="flex items-center bg-surface p-1 rounded-full border border-accent-muted/60 transition-colors duration-300">
+                @for (role of roles; track role) {
+                <button (click)="selectRole(role)" [class.bg-accent]="roleService.activeRole() === role"
+                    [class.text-white]="roleService.activeRole() === role"
+                    [class.text-gray-400]="roleService.activeRole() !== role"
+                    class="px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer hover:text-white">
+                    {{ roleLabel(role) }}
+                </button>
+                }
+            </div>
+
+            <!-- Switcher Langue avec Menu Déroulant -->
+            <div class="relative" (click)="$event.stopPropagation()">
+                <button (click)="toggleLangMenu($event)"
+                    class="flex items-center justify-center px-3 w-9 h-9 rounded-full bg-surface border border-accent-muted/60 hover:border-accent text-xs font-bold text-white transition-colors duration-300 cursor-pointer gap-1.5">
+                    <span>{{ langService.currentLang() === 'fr' ? 'FR' : 'EN' }}</span>
+
+                </button>
+
+                <!-- Dropdown Menu -->
+                @if (isLangMenuOpen()) {
+                <div
+                    class="absolute right-0 mt-2 w-44 bg-surface border border-accent-muted/60 rounded-xl shadow-2xl py-2 z-50 backdrop-blur-md transition-all animate-in fade-in zoom-in-95 duration-150">
+
+                    <!-- Option Français -->
+                    <button (click)="setLanguage('fr')"
+                        class="w-full flex items-center justify-between px-4 py-2.5 text-left text-sm transition-colors cursor-pointer hover:bg-white/5">
+                        <span [class.text-accent]="langService.currentLang() === 'fr'"
+                            [class.text-gray-400]="langService.currentLang() !== 'fr'" class="font-medium">
+                            Français
+                        </span>
+                        <span [class.text-accent]="langService.currentLang() === 'fr'"
+                            [class.text-gray-500]="langService.currentLang() !== 'fr'" class="text-xs font-bold">
+                            FR
+                        </span>
+                    </button>
+
+                    <!-- Option English -->
+                    <button (click)="setLanguage('en')"
+                        class="w-full flex items-center justify-between px-4 py-2.5 text-left text-sm transition-colors cursor-pointer hover:bg-white/5">
+                        <span [class.text-accent]="langService.currentLang() === 'en'"
+                            [class.text-gray-400]="langService.currentLang() !== 'en'" class="font-medium">
+                            English
+                        </span>
+                        <span [class.text-accent]="langService.currentLang() === 'en'"
+                            [class.text-gray-500]="langService.currentLang() !== 'en'" class="text-xs font-bold">
+                            EN
+                        </span>
+                    </button>
+                </div>
+                }
+            </div>
+
+
+
+
+            <!-- Switcher Thème (Dark / Light) -->
+            <button (click)="themeService.toggleTheme()"
+                class="flex items-center justify-center w-9 h-9 rounded-full bg-surface border border-accent-muted/60 hover:border-accent text-xs text-white transition-colors duration-300 cursor-pointer overflow-hidden p-2">
+
+                @if (themeService.mode() === 'dark') {
+                <!-- Affiché en mode sombre : montre le Soleil pour basculer vers le mode clair -->
+                <img src="assets/images/sun.png" alt="Mode Clair" class="w-full h-full object-contain" />
+                } @else {
+                <!-- Affiché en mode clair : montre la Lune pour basculer vers le mode sombre -->
+                <img src="assets/images/lune.png" alt="Mode Sombre" class="w-full h-full object-contain" />
+                }
+            </button>
+
+        </div>
+
+    </div>
+</header>

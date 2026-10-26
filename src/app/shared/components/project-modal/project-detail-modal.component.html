@@ -1,0 +1,93 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md modal-backdrop"
+  (click)="onBackdropClick($event)">
+  <div
+    class="modal-panel bg-surface border border-white/10 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
+    <!-- Bouton de fermeture -->
+    <button type="button" (click)="close()" aria-label="Fermer"
+      class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-gray-300 hover:text-white hover:border-accent/60 transition-colors duration-300 cursor-pointer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Aperçu / galerie -->
+    <div class="rounded-xl overflow-hidden border border-white/5 mb-6 aspect-video bg-black/40">
+      <img [src]="gallery()[0]" [alt]="project().title" class="w-full h-full object-cover" />
+    </div>
+
+    @if (gallery().length > 1) {
+    <div class="grid grid-cols-3 gap-3 mb-6">
+      @for (image of gallery().slice(1); track image) {
+      <div class="rounded-lg overflow-hidden border border-white/5 aspect-video bg-black/40">
+        <img [src]="image" [alt]="project().title" loading="lazy" class="w-full h-full object-cover" />
+      </div>
+      }
+    </div>
+    }
+
+    <!-- En-tête -->
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <span
+        class="bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-md border border-accent/40 transition-colors duration-300">
+        {{ categoryLabel() }}
+      </span>
+      <span class="text-[11px] text-gray-500 uppercase tracking-wider">
+        {{ text().role }} · {{ roleLabel() }}
+      </span>
+    </div>
+
+    <h3 class="text-white font-bold text-2xl mb-4">{{ project().title }}</h3>
+
+    <p class="text-gray-400 text-sm leading-relaxed mb-6">{{ project().fullDescription[langService.currentLang()] }}</p>
+
+    <!-- Fonctionnalités clés -->
+    @if (localizedFeatures()?.length) {
+    <div class="mb-6">
+      <h4 class="text-white font-semibold text-sm mb-3">{{ text().features }}</h4>
+      <ul class="space-y-2">
+        @for (feature of localizedFeatures(); track feature) {
+        <li class="flex items-start gap-3 text-gray-400 text-sm">
+          <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+          <span>{{ feature }}</span>
+        </li>
+        }
+      </ul>
+    </div>
+    }
+
+    <!-- Technologies -->
+    <div class="mb-8">
+      <h4 class="text-white font-semibold text-sm mb-3">{{ text().tech }}</h4>
+      <ul class="flex flex-wrap gap-2 text-[11px] text-gray-400">
+        @for (tech of project().technologies; track tech) {
+        <li class="px-2 mt-8 py-1 text-white  font-bold text-xs">{{ tech }} / </li>
+        <!-- <li class="px-2.5 py-1 bg-white/5 border border-white/5 rounded-md">{{ tech }}</li> -->
+        }
+      </ul>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-wrap gap-3">
+      @if (demoLink()) {
+      <a [href]="demoLink()" target="_blank" rel="noopener noreferrer"
+        class="bg-accent text-white font-bold text-xs uppercase tracking-wide px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300">
+        {{ text().demo }}
+      </a>
+      }
+      @if (project().figmaUrl) {
+      <a [href]="project().figmaUrl" target="_blank" rel="noopener noreferrer"
+        class="bg-accent text-white font-bold text-xs uppercase tracking-wide px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300">
+        Figma
+      </a>
+      }
+      @if (secondaryLink()) {
+      <a [href]="secondaryLink()" target="_blank" rel="noopener noreferrer"
+        class="border border-white/15 text-white font-bold text-xs uppercase tracking-wide px-6 py-3 rounded-full hover:border-accent/60 transition-colors duration-300">
+        {{ text().github }}
+      </a>
+      }
+    </div>
+  </div>
+</div>

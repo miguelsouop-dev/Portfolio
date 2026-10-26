@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.about-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+}
+
+.about-card--dev:hover,
+.about-card--hack:hover,
+.about-card--design:hover {
+  /* La couleur provient de la palette centralisée (portofolio-colors.constants.ts). */
+  box-shadow: 0 24px 48px rgba(var(--accent-color-rgb), 0.14);
+}
+
+.about-dev-value {
+  color: var(--accent-color);
+}
+
+.about-hack-prompt,
+.about-hack-value {
+  color: var(--accent-color);
+}
+
+.about-hack-cursor {
+  animation: terminal-blink 1.2s step-end infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0.35;
+  }
+}

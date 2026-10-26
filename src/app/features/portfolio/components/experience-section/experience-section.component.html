@@ -1,0 +1,35 @@
+<section id="experience" class="py-20 px-8 md:px-16 lg:px-24 bg-canvas relative">
+  <div class="max-w-7xl mx-auto">
+    <!-- En-tête de section -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+      <!-- <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-[0.2em] text-accent transition-colors duration-300"> -->
+      <h2
+        class="text-3xl md:text-4xl font-extrabold uppercase text-accent tracking-tight transition-colors duration-300">
+        {{ text().badge }}
+      </h2>
+      <p class="text-gray-400 text-sm max-w-sm sm:text-right">
+        {{ text().hint }}
+      </p>
+    </div>
+
+    <!-- Table minimaliste : une ligne par expérience -->
+    <div class="experience-table mt-24">
+      <div class="experience-row experience-row--head">
+        <span>{{ text().period }}</span>
+        <span>{{ text().title }}</span>
+        <span>{{ text().company }}</span>
+      </div> @for (item of experiences(); track trackExperience($index, item)) {
+      <article class="experience-row experience-row--item">
+        <span class="experience-period">
+          {{ item.period[langService.currentLang()] }}
+        </span>
+        <span class="experience-title">
+          {{ item.title[langService.currentLang()] }}
+        </span>
+        <span class="experience-company">{{ item.company }}</span>
+      </article> } @empty {
+      <p class="py-10 text-center text-sm text-gray-500">{{ text().empty }}</p>
+      }
+    </div>
+  </div>
+</section>

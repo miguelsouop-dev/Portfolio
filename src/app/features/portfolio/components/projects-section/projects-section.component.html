@@ -1,0 +1,93 @@
+<section id="projects" class="py-12 pb-24 px-8 md:px-16 lg:px-24 bg-canvas relative">
+  <div class="max-w-7xl mx-auto">
+    <!-- En-tête : titre + sous-titre -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+      <h2
+        class="text-3xl md:text-4xl font-extrabold tracking-tight text-accent uppercase transition-colors duration-300">
+        {{ text().badge }}
+      </h2>
+      <p class="text-gray-400 text-sm">{{ text().hint }}</p>
+    </div>
+
+    <!-- Filtres dynamiques selon le rôle actif -->
+    <div class="flex flex-wrap gap-3 mb-12">
+      @for (filter of filters(); track filter) {
+      <button type="button" (click)="selectFilter(filter)" [class.bg-accent]="activeFilter() === filter"
+        [class.text-white]="activeFilter() === filter" [class.font-semibold]="activeFilter() === filter"
+        [class.text-gray-400]="activeFilter() !== filter" [class.hover:text-white]="activeFilter() !== filter"
+        [class.hover:border-accent/40]="activeFilter() !== filter"
+        class="px-5 py-2 rounded-full border border-white/10 text-xs uppercase tracking-wide transition-all duration-300 cursor-pointer">
+        {{ filterLabel(filter) }}
+      </button>
+      }
+    </div>
+
+    <!-- Grille de projets (2 colonnes) -->
+    @if (filteredProjects().length > 0) {
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+      @for (project of filteredProjects(); track project.id) {
+      <article
+        class="project-card group bg-surface border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer"
+        (click)="openProject(project)">
+        <!-- Image + overlay -->
+        <div class="relative aspect-16/10 overflow-hidden">
+          <img [src]="project.image" [alt]="project.title" loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            (error)="project.image = 'assets/images/projects/placeholder.jpg'" />
+
+          <!-- Badge catégorie -->
+          <span
+            class="absolute top-3 left-3 bg-transparent/70 backdrop-blur-sm text-accent text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-[7px] border border-accent transition-colors duration-300">
+            {{ categoryLabel(project.category) }}
+          </span>
+
+          <!-- Overlay au survol -->
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/80 via-black/60 to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span class="bg-accent text-white font-bold text-xs uppercase px-6.5 py-4 rounded-full shadow-lg">
+              {{ text().viewProject }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Contenu -->
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-white font-bold text-xl">{{ project.title }}</h3>
+            <span class="text-xs uppercase tracking-wider text-gray-500  shrink-0">
+              {{ categoryLabel(project.category) }}
+            </span>
+          </div>
+
+          <p class="text-gray-400 text-sm line-clamp-2 mt-2 font-normal">
+            {{ project.shortDescription[langService.currentLang()] }}
+          </p>
+
+          <ul class="flex flex-wrap gap-2 text-xs  text-gray-400 uppercase mt-4">
+            @for (tech of project.technologies; track tech) {
+            <li class="px-2 mt-8 py-1 text-white  font-bold text-xs">{{ tech }} / </li>
+            <!-- <li class="px-2 py-1 bg-white/5 border border-white/5 rounded-md">{{ tech }}</li> -->
+            }
+          </ul>
+
+          @if (project.demoUrl) {
+          <a [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" (click)="$event.stopPropagation()"
+            class="inline-flex items-center gap-1 text-xs  uppercase mt-5 text-gray-400 hover:text-accent transition-colors duration-300">
+            {{ text().viewLive }}
+            <span>&#8599;</span>
+          </a>
+          }
+        </div>
+      </article>
+      }
+    </div>
+    } @else {
+    <p class="text-gray-500 text-sm py-12 text-center">{{ text().empty }}</p>
+    }
+  </div>
+
+  <!-- Modale de détail -->
+  @if (selectedProject(); as project) {
+  <app-project-detail-modal [project]="project" (closed)="closeProject()"></app-project-detail-modal>
+  }
+</section>

@@ -1,0 +1,65 @@
+<section id="hero"
+  class="relative min-h-screen flex items-center pt-10 pb-16 px-8 md:px-16 lg:px-24 overflow-hidden bg-canvas">
+  <!-- <video autoplay loop muted playsinline
+    class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" aria-hidden="true">
+    <source [src]="currentVideoUrl()" type="video/mp4" />
+  </video> -->
+
+
+  <!-- Lecteur Vidéo d'arrière-plan immersif -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <video #bgVideo autoplay loop muted playsinline webkit-playsinline preload="auto" [src]="currentVideoUrl()"
+      class="w-full h-full object-cover opacity-25 transition-opacity duration-700">
+    </video>
+    <div class="absolute inset-0 bg-linear-to-r from-canvas via-canvas/0 to-canvas/0"></div>
+  </div>
+
+
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto">
+    <p class="text-sm font-semibold tracking-wider text-accent mb-6 transition-colors duration-300">
+      {{ heroContent().category }}
+    </p>
+
+    <p class="text-gray-300 font-medium text-xl md:text-2xl mb-1.5">
+      {{ heroContent().greeting }}
+    </p>
+
+    <h1 class="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4">
+      {{ heroContent().name }}
+    </h1>
+
+    <p class="text-2xl md:text-3xl lg:text-4xl font-bold text-accent mb-5 transition-colors duration-300">
+      {{ heroContent().roleTitle }}
+    </p>
+
+    <p class="text-white text-xl md:text-2xl font-semibold leading-snug max-w-4xl mb-10">
+      {{ heroContent().catchphrase }}
+    </p>
+
+    <p class="text-gray-400 text-base md:text-md max-w-3xl leading-relaxed mb-8">
+      {{ heroContent().description }}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+      <button type="button" (click)="scrollTo('projects')"
+        class="bg-accent text-white px-8 py-3.5 rounded-full font-semibold hover:opacity-90 transition-all cursor-pointer">
+        {{ heroContent().primaryBtn }}
+      </button>
+
+      @if (roleService.activeRole() === 'Développeur Fullstack') {
+      <a [href]="cvDownloadUrl" download
+        class="border border-white/20 text-white px-8 py-3.5 rounded-full font-semibold hover:border-white transition-all cursor-pointer bg-white/5 backdrop-blur-sm text-center">
+        {{ heroContent().secondaryBtn }}
+      </a>
+      } @else {
+      <button type="button" (click)="scrollTo('contact')"
+        class="border border-white/20 text-white px-8 py-3.5 rounded-full font-semibold hover:border-white transition-all cursor-pointer bg-white/5 backdrop-blur-sm">
+        {{ heroContent().secondaryBtn }}
+      </button>
+      }
+    </div>
+  </div>
+</section>
+
+<app-whatsapp-float />

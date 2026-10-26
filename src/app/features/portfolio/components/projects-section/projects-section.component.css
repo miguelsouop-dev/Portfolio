@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.project-card {
+  will-change: transform;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(var(--accent-color-rgb), 0.12);
+}
+
+/* Animation de fade lors du changement de catégorie */
+@keyframes project-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+article {
+  animation: project-fade-in 0.4s ease both;
+}

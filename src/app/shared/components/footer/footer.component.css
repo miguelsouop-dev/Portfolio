@@ -1,0 +1,5 @@
+/* host représente le composant hôte dans ce cas la balise "footer" dans le html */
+
+:host {
+  display: block;
+}
