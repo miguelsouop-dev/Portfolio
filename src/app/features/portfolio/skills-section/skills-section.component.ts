@@ -1,9 +1,9 @@
 import { Component, computed, inject, signal, isDevMode } from '@angular/core';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
-import { SKILLS_BY_ROLE, SKILLS_SECTION_TEXT } from '../../../../data/skills.data';
-import { SKILL_BRAND_COLORS } from '../../../../data/portofolio-colors.constants';
-import { SkillCategory } from '../../../../core/models/portfolio.model';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
+import { SKILLS_BY_ROLE, SKILLS_SECTION_TEXT } from '../../../data/skills.data';
+import { SKILL_BRAND_COLORS } from '../../../data/portofolio-colors.constants';
+import { SkillCategory } from '../../../core/models/portfolio.model';
 
 interface SkillViewModel {
   name: string;

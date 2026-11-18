@@ -8,18 +8,51 @@ import { RoleType } from '../core/models/portfolio.model';
  * Tailwind (voir src/styles.css). Aucun code hexadécimal ne doit apparaître
  * dans les templates HTML.
  */
-export const PORTFOLIO_COLORS = {
+export const PORTFOLIO_DARK_COLORS = {
   /** Fond de page (sections, header) */
   canvas: '#0A0A0B',
   /** Fond des cartes, panneaux et menus */
   surface: '#141416',
+  /** Fond surélevé (hover, dropdowns) */
+  surfaceElevated: '#1A1A1E',
   /** Texte principal */
   ink: '#FFFFFF',
+  /** Texte secondaire */
+  inkMuted: '#94A3B8',
+  /** Texte discret / hints */
+  inkFaint: '#64748B',
+  /** Bordures */
+  border: 'rgba(255, 255, 255, 0.1)',
+  borderSubtle: 'rgba(255, 255, 255, 0.05)',
   /** Bouton flottant WhatsApp */
   whatsapp: '#25D366',
   /** Curseur de la scrollbar */
   scrollbarThumb: '#222226',
 } as const;
+
+export const PORTFOLIO_LIGHT_COLORS = {
+  /** Fond de page doux Slate-50 */
+  canvas: '#F8FAFC',
+  /** Fond des cartes blanc pur pour créer l'élévation */
+  surface: '#FFFFFF',
+  /** Fond surélevé Slate-100 */
+  surfaceElevated: '#F1F5F9',
+  /** Texte principal Slate-900 */
+  ink: '#0F172A',
+  /** Texte secondaire Slate-600 */
+  inkMuted: '#475569',
+  /** Texte discret Slate-400 */
+  inkFaint: '#94A3B8',
+  /** Bordures Slate douces */
+  border: 'rgba(15, 23, 42, 0.08)',
+  borderSubtle: 'rgba(15, 23, 42, 0.04)',
+  /** Bouton flottant WhatsApp */
+  whatsapp: '#25D366',
+  /** Curseur de la scrollbar */
+  scrollbarThumb: '#CBD5E1',
+} as const;
+
+export const PORTFOLIO_COLORS = PORTFOLIO_DARK_COLORS;
 
 /** Couleur d'accentuation par rôle actif (utilisée par --accent-color). */
 export const ROLE_ACCENT_COLORS: Record<RoleType, string> = {

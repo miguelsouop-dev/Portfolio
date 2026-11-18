@@ -1,19 +1,25 @@
 import { Service } from '@angular/core';
 import {
-  PORTFOLIO_COLORS,
+  PORTFOLIO_DARK_COLORS,
+  PORTFOLIO_LIGHT_COLORS,
   ROLE_ACCENT_COLORS,
   ROLE_ACCENT_MUTED_COLORS,
 } from '../../data/portofolio-colors.constants';
-import { RoleType } from '../models/portfolio.model';
+import { RoleType, ThemeMode } from '../models/portfolio.model';
 
 /**
  * Correspondance entre les clés de la palette et les variables CSS
- * exposedues au document (pilotées par les tokens Tailwind de src/styles.css).
+ * exposées au document (pilotées par les tokens Tailwind de src/styles.css).
  */
 const CSS_VARIABLES = {
   canvas: '--palette-canvas',
   surface: '--palette-surface',
+  surfaceElevated: '--palette-surface-elevated',
   ink: '--palette-ink',
+  inkMuted: '--palette-ink-muted',
+  inkFaint: '--palette-ink-faint',
+  border: '--palette-border',
+  borderSubtle: '--palette-border-subtle',
   whatsapp: '--palette-whatsapp',
   scrollbarThumb: '--palette-scrollbar-thumb',
 } as const;
@@ -43,16 +49,23 @@ export function hexToRgbChannels(hex: string): string {
  */
 @Service()
 export class PaletteService {
-  /** Applique les couleurs statiques de la palette. */
-  apply(): void {
+  /** Applique les couleurs de la palette selon le mode (dark ou light). */
+  apply(mode: ThemeMode = 'dark'): void {
     const root = this.rootElement();
     if (!root) {
       return;
     }
 
+    const palette = mode === 'light' ? PORTFOLIO_LIGHT_COLORS : PORTFOLIO_DARK_COLORS;
+
     (Object.keys(CSS_VARIABLES) as (keyof typeof CSS_VARIABLES)[]).forEach((key) => {
-      root.style.setProperty(CSS_VARIABLES[key], PORTFOLIO_COLORS[key]);
+      root.style.setProperty(CSS_VARIABLES[key], palette[key]);
     });
+  }
+
+  /** Met à jour la palette lors d'un changement de thème. */
+  applyTheme(mode: ThemeMode): void {
+    this.apply(mode);
   }
 
   /** Applique la couleur d'accent (et sa version atténuée) du rôle actif. */

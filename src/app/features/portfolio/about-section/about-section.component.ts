@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
-import { ABOUT_BY_ROLE, ABOUT_HINT } from '../../../../data/about.data';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
+import { ABOUT_BY_ROLE, ABOUT_HINT } from '../../../data/about.data';
 
 @Component({
   selector: 'app-about-section',

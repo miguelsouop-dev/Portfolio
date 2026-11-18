@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
-import { EXPERIENCES_DATA, EXPERIENCE_SECTION_TEXT } from '../../../../data/experience.data';
-import { ExperienceItem } from '../../../../core/models/experience.model';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
+import { EXPERIENCES_DATA, EXPERIENCE_SECTION_TEXT } from '../../../data/experience.data';
+import { ExperienceItem } from '../../../core/models/experience.model';
 
 @Component({
   selector: 'app-experience-section',

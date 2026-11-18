@@ -1,12 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
-import {
-  CONTACT_INFO,
-  CONTACT_SECTION_TEXT,
-  CONTACT_SUBTITLE,
-} from '../../../../data/contact.data';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
+import { CONTACT_INFO, CONTACT_SECTION_TEXT, CONTACT_SUBTITLE } from '../../../data/contact.data';
 
 @Component({
   selector: 'app-contact-section',

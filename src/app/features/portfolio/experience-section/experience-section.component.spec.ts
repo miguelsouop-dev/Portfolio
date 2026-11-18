@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ExperienceSectionComponent } from './experience-section.component';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
 
 describe('ExperienceSectionComponent', () => {
   async function setup() {

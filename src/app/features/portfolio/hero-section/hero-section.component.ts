@@ -8,11 +8,11 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
-import { HERO_BY_ROLE } from '../../../../data/hero.data';
-import { RoleType } from '../../../../core/models/portfolio.model';
-import { WhatsAppFloatComponent } from '../../../../shared/components/whatsapp-float/whatsapp-float.component';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
+import { HERO_BY_ROLE } from '../../../data/hero.data';
+import { RoleType } from '../../../core/models/portfolio.model';
+import { WhatsAppFloatComponent } from '../../../shared/components/whatsapp-float/whatsapp-float.component';
 
 @Component({
   selector: 'app-hero-section',

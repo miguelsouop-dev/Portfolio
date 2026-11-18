@@ -1,15 +1,15 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoleService } from '../../../../core/services/role.service';
-import { LanguageService } from '../../../../core/services/language.service';
+import { RoleService } from '../../../core/services/role.service';
+import { LanguageService } from '../../../core/services/language.service';
 import {
   FILTERS_BY_ROLE,
   PROJECTS_BY_ROLE,
   PROJECTS_SECTION_TEXT,
   PROJECT_CATEGORY_LABELS,
-} from '../../../../data/projects.data';
-import { Project, ProjectCategory } from '../../../../core/models/project.model';
-import { ProjectDetailModalComponent } from '../../../../shared/components/project-modal/project-detail-modal.component';
+} from '../../../data/projects.data';
+import { Project, ProjectCategory } from '../../../core/models/project.model';
+import { ProjectDetailModalComponent } from '../../../shared/components/project-modal/project-detail-modal.component';
 
 @Component({
   selector: 'app-projects-section',

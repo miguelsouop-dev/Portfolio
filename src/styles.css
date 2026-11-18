@@ -1,16 +1,35 @@
 @import 'tailwindcss';
 
 /*
- * Tokens Tailwind alimentés par la palette centralisée
+ * TOKENS TAILWIND ALIMENTÉS PAR LA PALETTE CENTRALISÉE
  * (src/app/data/portofolio-colors.constants.ts).
- * Les valeurs sont injectées dans le document par le PaletteService.
+ * Les valeurs sont injectées dynamiquement par le PaletteService et ThemeService.
  */
 @theme {
   --color-accent: var(--accent-color);
   --color-accent-muted: var(--accent-color-muted);
   --color-canvas: var(--palette-canvas);
   --color-surface: var(--palette-surface);
+  --color-surface-elevated: var(--palette-surface-elevated);
+  --color-ink: var(--palette-ink);
+  --color-ink-muted: var(--palette-ink-muted);
   --color-whatsapp: var(--palette-whatsapp);
+}
+
+:root {
+  /* --- PALETTE DARK PAR DÉFAUT --- */
+  --palette-canvas: #0A0A0B;
+  --palette-surface: #141416;
+  --palette-surface-elevated: #1A1A1E;
+  --palette-ink: #FFFFFF;
+  --palette-ink-muted: #94A3B8;
+  --palette-ink-faint: #64748B;
+  --palette-border: rgba(255, 255, 255, 0.1);
+  --palette-border-subtle: rgba(255, 255, 255, 0.05);
+  --palette-header-bg: rgba(10, 10, 11, 0.88);
+  --palette-modal-backdrop: rgba(0, 0, 0, 0.8);
+  --palette-card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --palette-card-shadow-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
 }
 
 @layer base {
@@ -24,11 +43,399 @@
     background-color: var(--palette-canvas);
     color: var(--palette-ink);
     overflow-x: hidden;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 }
 
+/* ==========================================================================
+   STYLE GUIDE MODE CLAIR (LIGHT THEME) — DESIGN SENIOR PRO
+   Palette soignée : Fond Slate-50 (#F8FAFC), Cartes Blanc Pur (#FFFFFF),
+   Typographie Slate-900 (#0F172A), Ombres subtiles et contrastes conformes WCAG.
+   ========================================================================== */
 body.theme-light {
   color-scheme: light;
+  --palette-canvas: #F8FAFC;
+  --palette-surface: #FFFFFF;
+  --palette-surface-elevated: #F1F5F9;
+  --palette-ink: #0F172A;
+  --palette-ink-muted: #475569;
+  --palette-ink-faint: #94A3B8;
+  --palette-border: rgba(15, 23, 42, 0.08);
+  --palette-border-subtle: rgba(15, 23, 42, 0.04);
+  --palette-header-bg: rgba(248, 250, 252, 0.88);
+  --palette-modal-backdrop: rgba(15, 23, 42, 0.55);
+  --palette-card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -2px rgba(15, 23, 42, 0.03);
+  --palette-card-shadow-hover: 0 20px 30px -8px rgba(15, 23, 42, 0.08), 0 8px 12px -6px rgba(15, 23, 42, 0.04);
+}
+
+/* 1. TYPOGRAPHIE & HIÉRARCHIE VISUELLE */
+body.theme-light h1:not(.keep-white),
+body.theme-light h2:not(.text-accent):not(.keep-white),
+body.theme-light h3:not(.text-accent):not(.keep-white),
+body.theme-light h4:not(.text-accent):not(.keep-white) {
+  color: #0F172A;
+}
+
+body.theme-light .text-white:not(.bg-accent):not([class*="bg-accent"]):not(.keep-white):not(.about-card--dev *):not(.about-card--hack *) {
+  color: #0F172A;
+}
+
+body.theme-light .text-white\/90:not(.bg-accent):not([class*="bg-accent"]) {
+  color: #1E293B;
+}
+
+body.theme-light .text-white\/80:not(.bg-accent):not([class*="bg-accent"]) {
+  color: #334155;
+}
+
+body.theme-light .text-white\/60:not(.bg-accent):not([class*="bg-accent"]) {
+  color: #64748B;
+}
+
+body.theme-light .text-gray-300:not(.about-card--dev *):not(.about-card--hack *) {
+  color: #334155;
+}
+
+body.theme-light .text-gray-400:not(.about-card--dev *):not(.about-card--hack *) {
+  color: #475569;
+}
+
+body.theme-light .text-gray-500:not(.about-card--dev *):not(.about-card--hack *) {
+  color: #64748B;
+}
+
+/* Garantit que les éléments d'accent (boutons, sélections, badges actifs) conservent leur fond coloré et texte blanc */
+body.theme-light .bg-accent,
+body.theme-light [class*="bg-accent"] {
+  background-color: var(--accent-color) !important;
+  color: #FFFFFF !important;
+}
+
+body.theme-light .bg-accent *,
+body.theme-light [class*="bg-accent"] * {
+  color: #FFFFFF !important;
+}
+
+/* 2. SURFACES, SECTIONS ET CARTES */
+body.theme-light .bg-canvas {
+  background-color: var(--palette-canvas) !important;
+}
+
+body.theme-light .bg-surface {
+  background-color: var(--palette-surface) !important;
+  box-shadow: var(--palette-card-shadow);
+}
+
+body.theme-light header {
+  background-color: var(--palette-header-bg) !important;
+  border-bottom-color: var(--palette-border) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+body.theme-light header a {
+  color: #0F172A;
+}
+
+body.theme-light header a:hover {
+  color: var(--accent-color);
+}
+
+/* Liens de navigation du header (Accueil, À propos, Compétences, Projets, Contact) */
+body.theme-light header nav button {
+  color: #475569 !important;
+  transition: color 200ms ease;
+}
+
+body.theme-light header nav button:hover {
+  color: #0F172A !important;
+}
+
+/* Onglets de rôles inactifs (Développeur Fullstack, Ethical Hacker, UI/UX Designer) :
+   Identique à 100% à la couleur et aux effets de la navigation principale */
+body.theme-light header .rounded-full button:not(.bg-accent):not([class*="bg-accent"]) {
+  color: #475569 !important;
+  transition: color 200ms ease;
+}
+
+body.theme-light header .rounded-full button:not(.bg-accent):not([class*="bg-accent"]):hover {
+  color: #0F172A !important;
+}
+
+/* Conteneur enveloppant les rôles : bordure teintée selon la couleur du rôle correspondant (Bleu / Rouge / Rose) */
+body.theme-light header div.rounded-full[class*="border"],
+body.theme-light header .rounded-full.border {
+  border-color: rgba(var(--accent-color-rgb), 0.5) !important;
+  transition: border-color 300ms ease;
+}
+
+body.theme-light header div.rounded-full[class*="border"]:hover,
+body.theme-light header .rounded-full.border:hover {
+  border-color: var(--accent-color) !important;
+}
+
+/* Boutons d'action header (langue, thème) non actifs */
+body.theme-light header button[class*="rounded-full"]:not(.bg-accent):not([class*="bg-accent"]) {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #475569 !important;
+  transition: all 200ms ease;
+}
+
+body.theme-light header button[class*="rounded-full"]:not(.bg-accent):not([class*="bg-accent"]):hover {
+  border-color: var(--accent-color) !important;
+  color: #0F172A !important;
+}
+
+/* Rôles actifs dans le header (Développeur, Ethical Hacker, UI/UX Designer) : TOUJOURS texte blanc éclatant */
+body.theme-light header button.bg-accent,
+body.theme-light header button.bg-accent:hover,
+body.theme-light header button[class*="bg-accent"],
+body.theme-light header button[class*="bg-accent"]:hover,
+body.theme-light header .rounded-full button.bg-accent,
+body.theme-light header .rounded-full button.bg-accent:hover {
+  background-color: var(--accent-color) !important;
+  color: #FFFFFF !important;
+}
+
+body.theme-light header .absolute[class*="bg-surface"] {
+  background-color: #FFFFFF !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+}
+
+body.theme-light footer {
+  background-color: #F8FAFC !important;
+  border-top-color: var(--palette-border) !important;
+}
+
+body.theme-light footer a.rounded-full {
+  background-color: #FFFFFF !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #334155 !important;
+}
+
+body.theme-light footer a.rounded-full:hover {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+}
+
+/* Bordures légères & adaptatives */
+body.theme-light .border-white\/5,
+body.theme-light .border-white\/10,
+body.theme-light .border-white\/15,
+body.theme-light .border-white\/20,
+body.theme-light .border-white\/30 {
+  border-color: var(--palette-border) !important;
+}
+
+/* Éléments subtilement transparents / Glassmorphism */
+body.theme-light .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+body.theme-light .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+body.theme-light .hover\:bg-white\/5:hover {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* 3. SECTION HERO */
+body.theme-light #hero {
+  background-color: var(--palette-canvas) !important;
+}
+
+body.theme-light #hero video {
+  opacity: 0.12 !important; /* Estompe la vidéo pour une lisibilité parfaite du texte */
+}
+
+body.theme-light #hero .bg-linear-to-r {
+  background-image: linear-gradient(to right, var(--palette-canvas), transparent, transparent) !important;
+}
+
+body.theme-light #hero a[class*="border-white"],
+body.theme-light #hero button[class*="border-white"] {
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  color: #0F172A !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+body.theme-light #hero a[class*="border-white"]:hover,
+body.theme-light #hero button[class*="border-white"]:hover {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  background-color: #FFFFFF !important;
+}
+
+/* 4. SECTION ABOUT : PRÉSERVATION DU THÈME CODE & TERMINAL */
+/* Le terminal et l'éditeur de code conservent leur esthétique IDE sombre ultra-pro */
+body.theme-light .about-card--dev,
+body.theme-light .about-card--hack {
+  background-color: #0F172A !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.2) !important;
+}
+
+body.theme-light .about-card--dev .bg-canvas\/60,
+body.theme-light .about-card--hack .bg-canvas\/60 {
+  background-color: #0B1120 !important;
+}
+
+body.theme-light .about-card--dev pre,
+body.theme-light .about-card--hack .space-y-4 {
+  color: #E2E8F0 !important;
+}
+
+body.theme-light .about-card--dev .text-white {
+  color: #F8FAFC !important;
+}
+
+body.theme-light .about-card--dev .text-gray-500,
+body.theme-light .about-card--hack .text-gray-400 {
+  color: #94A3B8 !important;
+}
+
+/* Compteurs statistiques dans About */
+body.theme-light #about .grid .rounded-2xl {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  box-shadow: var(--palette-card-shadow);
+}
+
+/* 5. SECTION SKILLS (COMPÉTENCES) */
+body.theme-light .skill-card {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+body.theme-light .skill-card:hover {
+  border-color: var(--hover-color) !important;
+  box-shadow: 0 6px 20px -2px var(--hover-color), 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+}
+
+body.theme-light .skill-card span:not(.skill-card__fallback) {
+  color: #475569;
+}
+
+body.theme-light .skill-card:hover span:not(.skill-card__fallback) {
+  color: #0F172A;
+}
+
+body.theme-light .skill-card .skill-card__fallback {
+  color: var(--hover-color) !important;
+}
+
+/* 6. SECTION PROJETS */
+body.theme-light .project-card {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  box-shadow: var(--palette-card-shadow);
+}
+
+body.theme-light .project-card:hover {
+  border-color: var(--accent-color) !important;
+  box-shadow: var(--palette-card-shadow-hover);
+}
+
+/* Boutons de filtres projets inactifs */
+body.theme-light #projects button[class*="border-white"]:not(.bg-accent):not([class*="bg-accent"]) {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  color: #475569 !important;
+}
+
+body.theme-light #projects button[class*="border-white"]:not(.bg-accent):not([class*="bg-accent"]):hover {
+  border-color: var(--accent-color) !important;
+  color: #0F172A !important;
+}
+
+/* Boutons de filtres projets actifs / sélectionnés : arrière-plan coloré (accent), bordure et texte blanc éclatant */
+body.theme-light #projects button.bg-accent,
+body.theme-light #projects button[class*="bg-accent"] {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+/* 7. SECTION CONTACT */
+body.theme-light #contact input,
+body.theme-light #contact textarea {
+  color: #0F172A !important;
+  border-bottom-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+body.theme-light #contact input:focus,
+body.theme-light #contact textarea:focus {
+  border-bottom-color: var(--accent-color) !important;
+}
+
+body.theme-light #contact input::placeholder,
+body.theme-light #contact textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+body.theme-light #contact button[type="submit"] {
+  box-shadow: none !important;
+}
+
+/* Boutons sociaux & info cercles */
+body.theme-light #contact .rounded-full.bg-surface {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+body.theme-light #contact .rounded-full.bg-surface svg {
+  color: #334155;
+}
+
+body.theme-light #contact a.rounded-full.bg-surface:hover {
+  border-color: var(--accent-color) !important;
+}
+
+body.theme-light #contact a.rounded-full.bg-surface:hover svg {
+  color: var(--accent-color) !important;
+}
+
+/* 8. MODALE DE DÉTAIL PROJET */
+body.theme-light .modal-backdrop {
+  background-color: var(--palette-modal-backdrop) !important;
+}
+
+body.theme-light .modal-panel {
+  background-color: #FFFFFF !important;
+  border-color: var(--palette-border) !important;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.2) !important;
+}
+
+body.theme-light .modal-panel button[aria-label="Fermer"] {
+  background-color: #F1F5F9 !important;
+  border-color: var(--palette-border) !important;
+  color: #475569 !important;
+}
+
+body.theme-light .modal-panel button[aria-label="Fermer"]:hover {
+  color: #0F172A !important;
+  border-color: var(--accent-color) !important;
+}
+
+body.theme-light .modal-panel .bg-black\/40 {
+  background-color: #F1F5F9 !important;
+  border-color: var(--palette-border) !important;
+}
+
+body.theme-light .modal-panel a[class*="border-white"] {
+  border-color: rgba(15, 23, 42, 0.2) !important;
+  color: #0F172A !important;
+  background-color: #FFFFFF !important;
+}
+
+body.theme-light .modal-panel a[class*="border-white"]:hover {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
 }
 
 /* Utilitaires réutilisables */

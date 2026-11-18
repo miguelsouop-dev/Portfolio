@@ -86,3 +86,32 @@
     display: none;
   }
 }
+
+/* Mode Clair pour la table d'expérience */
+:host-context(body.theme-light) .experience-table {
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
+:host-context(body.theme-light) .experience-row {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+:host-context(body.theme-light) .experience-row--head {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+:host-context(body.theme-light) .experience-row--item:hover {
+  background-color: rgba(15, 23, 42, 0.03);
+}
+
+:host-context(body.theme-light) .experience-period {
+  color: rgba(15, 23, 42, 0.6);
+}
+
+:host-context(body.theme-light) .experience-title {
+  color: #0F172A;
+}
+
+:host-context(body.theme-light) .experience-company {
+  color: rgba(15, 23, 42, 0.55);
+}
