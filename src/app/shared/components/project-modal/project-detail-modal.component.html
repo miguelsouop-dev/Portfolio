@@ -12,17 +12,25 @@
       </svg>
     </button>
 
-    <!-- Aperçu / galerie -->
-    <div class="rounded-xl overflow-hidden border border-white/5 mb-6 aspect-video bg-black/40">
-      <img [src]="gallery()[0]" [alt]="project().title" class="w-full h-full object-cover" />
+    <!-- Grand visuel principal -->
+    <div class="rounded-xl overflow-hidden border border-white/10 mb-4 aspect-video bg-black/40 relative">
+      <img [src]="activeImage()" [alt]="project().title" class="w-full h-full object-cover transition-all duration-300" />
     </div>
 
+    <!-- Miniatures sélectionnables -->
     @if (gallery().length > 1) {
-    <div class="grid grid-cols-3 gap-3 mb-6">
-      @for (image of gallery().slice(1); track image) {
-      <div class="rounded-lg overflow-hidden border border-white/5 aspect-video bg-black/40">
+    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-6">
+      @for (image of gallery(); track image) {
+      <button type="button"
+        (click)="selectImage(image)"
+        [class.border-accent]="activeImage() === image"
+        [class.ring-2]="activeImage() === image"
+        [class.ring-accent]="activeImage() === image"
+        [class.opacity-100]="activeImage() === image"
+        [class.opacity-60]="activeImage() !== image"
+        class="rounded-lg overflow-hidden border border-white/10 aspect-video bg-black/40 cursor-pointer hover:opacity-100 hover:border-accent/60 transition-all duration-200 focus:outline-none">
         <img [src]="image" [alt]="project().title" loading="lazy" class="w-full h-full object-cover" />
-      </div>
+      </button>
       }
     </div>
     }

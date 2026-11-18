@@ -13,14 +13,14 @@ export const PROJECT_CATEGORY_LABELS: Record<LanguageType, Record<ProjectCategor
   fr: {
     Web: 'Web',
     Mobile: 'Mobile',
-    'Réseau': 'Réseau',
+    Réseau: 'Réseau',
     Pentest: 'Pentest',
     Labs: 'Labs',
   },
   en: {
     Web: 'Web',
     Mobile: 'Mobile',
-    'Réseau': 'Network',
+    Réseau: 'Network',
     Pentest: 'Pentest',
     Labs: 'Labs',
   },
@@ -106,10 +106,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Web',
       roleType: 'Développeur Fullstack',
       image: 'assets/images/projects/vsecurity-web.jpg',
-      gallery: [
-        'assets/images/projects/vsecurity-web.jpg',
-        'assets/images/projects/vsecurity-web.jpg',
-      ],
+      gallery: ['assets/images/projects/vsecurity-web.jpg'],
       technologies: ['Laravel', 'Blade', 'MySQL', 'Chart.js'],
       features: {
         fr: [
@@ -143,10 +140,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Web',
       roleType: 'Développeur Fullstack',
       image: 'assets/images/projects/bigbazzar-dashboard.jpg',
-      gallery: [
-        'assets/images/projects/bigbazzar-dashboard.jpg',
-        'assets/images/projects/bigbazzar-dashboard.jpg',
-      ],
+      gallery: ['assets/images/projects/bigbazzar-dashboard.jpg'],
       technologies: ['Laravel', 'TailwindCSS', 'MySQL'],
       features: {
         fr: [
@@ -180,10 +174,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Web',
       roleType: 'Développeur Fullstack',
       image: 'assets/images/projects/carrefour-market.jpg',
-      gallery: [
-        'assets/images/projects/carrefour-market.jpg',
-        'assets/images/projects/carrefour-market.jpg',
-      ],
+      gallery: ['assets/images/projects/carrefour-market.jpg'],
       technologies: ['HTML', 'CSS', 'TailwindCSS'],
       features: {
         fr: [
@@ -216,10 +207,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Mobile',
       roleType: 'Développeur Fullstack',
       image: 'assets/images/projects/situr-mobile.jpg',
-      gallery: [
-        'assets/images/projects/situr-mobile.jpg',
-        'assets/images/projects/situr-mobile.jpg',
-      ],
+      gallery: ['assets/images/projects/situr-mobile.jpg'],
       technologies: ['Flutter', 'Dart', 'Laravel', 'MVVM', 'REST-API', 'Pusher'],
       features: {
         fr: [
@@ -254,7 +242,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Pentest',
       roleType: 'Ethical Hacker',
       image: 'assets/images/projects/vuln-market.jpg',
-      gallery: ['assets/images/projects/vuln-market.jpg', 'assets/images/projects/vuln-market.jpg'],
+      gallery: ['assets/images/projects/vuln-market.jpg'],
       technologies: ['Burp Suite', 'Nmap', 'OWASP Top 10', 'Linux'],
       features: {
         fr: [
@@ -286,7 +274,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Réseau',
       roleType: 'Ethical Hacker',
       image: 'assets/images/projects/network.jpg',
-      gallery: ['assets/images/projects/network.jpg', 'assets/images/projects/network.jpg'],
+      gallery: ['assets/images/projects/network.jpg'],
       technologies: ['VLAN', 'Cisco Packet Tracer', 'Réseau informatique', 'Trunck'],
       features: {
         fr: [
@@ -317,7 +305,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Labs',
       roleType: 'Ethical Hacker',
       image: 'assets/images/projects/raven-1-vm.jpg',
-      gallery: ['assets/images/projects/raven-1-vm.jpg', 'assets/images/projects/raven-1-vm.jpg'],
+      gallery: ['assets/images/projects/raven-1-vm.jpg'],
       technologies: ['VMware', 'VirtualBox', 'Kali Linux', 'Metasploit', 'OSINT'],
       features: {
         fr: [
@@ -350,7 +338,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Labs',
       roleType: 'Ethical Hacker',
       image: 'assets/images/projects/raven-2-vm.jpg',
-      gallery: ['assets/images/projects/raven-2-vm.jpg', 'assets/images/projects/raven-2-vm.jpg'],
+      gallery: ['assets/images/projects/raven-2-vm.jpg'],
       technologies: ['VMware', 'VirtualBox', 'Kali Linux', 'Metasploit', 'OSINT'],
       features: {
         fr: [
@@ -372,6 +360,45 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
   'UI/UX Designer': [
     {
+      id: 'whatspay-mobile-uiux',
+      title: 'WhatsPay — Mobile App Chat & FinTech Solidaire',
+      shortDescription: {
+        fr: "Conception UI/UX d'une application mobile alliant messagerie instantanée, transferts d'argent rapides, tontines et fonds d'entraide communautaire.",
+        en: 'UI/UX design of a mobile app combining instant messaging, fast money transfers, rotating savings (tontines), and mutual aid funds.',
+      },
+      fullDescription: {
+        fr: "WhatsPay est une application mobile hybride à la croisée de la messagerie instantanée et de la FinTech solidaire. L'interface a été conçue pour combiner la spontanéité d'un outil de communication au quotidien et la sécurité d'une plateforme financière.\n\nL'application permet d'échanger des messages, de lancer des appels audio et vidéo HD (individuels et de groupe), et d'effectuer des transferts d'argent rapides à ses proches avec un parcours de paiement clair et transparent. Elle met également l'accent sur la finance communautaire à travers la gestion digitalisée des cotisations et tontines, ainsi que des cagnottes de solidarité pour soutenir les membres traversant des moments difficiles (deuil, accident, maladie, urgences).",
+        en: 'WhatsPay is a hybrid mobile app bridging the gap between instant messaging and community FinTech. The interface was crafted to merge the ease of daily social conversations with the trust and reliability required for financial transactions.\n\nUsers can chat, place HD audio/video group calls, and send money swiftly to loved ones with transparent fee breakdowns. The app also features community-driven financial tools: digitized rotating savings (tontines), automated periodic contributions, and mutual solidarity emergency funds to assist members facing unexpected hardships (bereavement, accidents, medical expenses).',
+      },
+      category: 'Mobile',
+      roleType: 'UI/UX Designer',
+      image: 'assets/images/projects/whatspay-figma.jpg',
+      gallery: [
+        'assets/images/projects/whatspay-figma.jpg',
+        'assets/images/projects/whatspay-main.png',
+        'assets/images/projects/whatspay-transfer.png',
+        'assets/images/projects/whatspay-onboarding.png',
+      ],
+      technologies: ['Figma', 'UI/UX Design', 'Design System', 'FinTech', 'Prototypage'],
+      features: {
+        fr: [
+          'Messagerie instantanée et appels audio/vidéo HD individuels et de groupe',
+          "Transferts d'argent P2P rapides et sécurisés avec calcul transparent des frais",
+          'Gestion digitalisée des tontines et suivi des cotisations périodiques',
+          "Cagnottes d'entraide et de solidarité pour les imprévus (deuil, accident, maladie)",
+          'Design System mobile complet, wireframes et prototypes interactifs Figma',
+        ],
+        en: [
+          'Instant messaging and HD audio/video calls (1-on-1 and group calls)',
+          'Fast and secure P2P money transfers with transparent fee breakdown',
+          'Digitized rotating savings (tontines) and contribution tracking',
+          'Community emergency and solidarity funds for life events (bereavement, accidents, illness)',
+          'Comprehensive mobile Design System, wireframes, and interactive Figma prototypes',
+        ],
+      },
+      figmaUrl: 'https://www.figma.com',
+    },
+    {
       id: 'situr-web',
       title: 'SITUR — Parcours Utilisateur Transport',
       shortDescription: {
@@ -385,10 +412,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Web',
       roleType: 'UI/UX Designer',
       image: 'assets/images/projects/design-web-situr.jpg',
-      gallery: [
-        'assets/images/projects/design-web-situr.jpg',
-        'assets/images/projects/design-web-situr.jpg',
-      ],
+      gallery: ['assets/images/projects/design-web-situr.jpg'],
       technologies: ['Figma', 'User Research', 'Prototypage'],
       features: {
         fr: [
@@ -421,10 +445,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Mobile',
       roleType: 'UI/UX Designer',
       image: 'assets/images/projects/design-mobile-situr.jpg',
-      gallery: [
-        'assets/images/projects/design-mobile-situr.jpg',
-        'assets/images/projects/design-mobile-situr.jpg',
-      ],
+      gallery: ['assets/images/projects/design-mobile-situr.jpg'],
       technologies: ['Figma', 'Prototypage', 'Design System'],
       features: {
         fr: [
@@ -457,10 +478,7 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       category: 'Web',
       roleType: 'UI/UX Designer',
       image: 'assets/images/projects/sm-construction.jpg',
-      gallery: [
-        'assets/images/projects/sm-construction.jpg',
-        'assets/images/projects/sm-construction.jpg',
-      ],
+      gallery: ['assets/images/projects/sm-construction.jpg'],
       technologies: ['Adobe XD', 'Design System', 'Responsive Design'],
       features: {
         fr: [

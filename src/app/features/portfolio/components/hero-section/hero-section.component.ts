@@ -32,8 +32,7 @@ export class HeroSectionComponent implements AfterViewInit {
   private readonly heroVideos: Record<RoleType, string> = {
     'Développeur Fullstack': 'assets/videos/dev.mp4',
     'Ethical Hacker': 'assets/videos/hack.mp4',
-    'UI/UX Designer':
-      'https://assets.mixkit.co/videos/preview/mixkit-abstract-flowing-pink-lines-41221-large.mp4',
+    'UI/UX Designer': 'assets/videos/design.mp4',
   };
 
   heroContent = computed(() => {

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../../core/services/language.service';
 import { Project } from '../../../core/models/project.model';
@@ -59,8 +59,26 @@ export class ProjectDetailModalComponent {
 
   readonly gallery = computed<string[]>(() => {
     const project = this.project();
-    return project.gallery?.length ? project.gallery : [project.image];
+    const list = project.gallery?.length ? project.gallery : [project.image];
+    // Dédoublonnage : garantit que chaque image n'apparaît qu'une seule fois
+    return Array.from(new Set(list.filter(Boolean)));
   });
+
+  readonly selectedImage = signal<string | null>(null);
+
+  /** Image principale actuellement affichée dans le grand visuel. */
+  readonly activeImage = computed<string>(() => {
+    const selected = this.selectedImage();
+    const currentGallery = this.gallery();
+    if (selected && currentGallery.includes(selected)) {
+      return selected;
+    }
+    return currentGallery[0] ?? this.project().image;
+  });
+
+  selectImage(image: string): void {
+    this.selectedImage.set(image);
+  }
 
   readonly demoLink = computed<string | undefined>(() => this.project().demoUrl);
   readonly secondaryLink = computed<string | undefined>(() => this.project().githubUrl);
