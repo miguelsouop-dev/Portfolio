@@ -42,6 +42,15 @@ export class ProjectDetailModalComponent {
 
   readonly text = computed(() => MODAL_TEXT[this.langService.currentLang()]);
 
+  /** Titre bilingue du projet selon la langue courante. */
+  readonly projectTitle = computed<string>(() => {
+    const t = this.project().title;
+    if (typeof t === 'string') {
+      return t;
+    }
+    return t[this.langService.currentLang()] ?? t['fr'];
+  });
+
   /** Fonctionnalités traduites selon la langue courante. */
   readonly localizedFeatures = computed<string[] | undefined>(
     () => this.project().features?.[this.langService.currentLang()],

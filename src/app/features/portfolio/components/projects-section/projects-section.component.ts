@@ -46,6 +46,13 @@ export class ProjectsSectionComponent {
 
   readonly text = computed(() => PROJECTS_SECTION_TEXT[this.langService.currentLang()]);
 
+  projectTitle(project: Project): string {
+    if (typeof project.title === 'string') {
+      return project.title;
+    }
+    return project.title[this.langService.currentLang()] ?? project.title['fr'];
+  }
+
   allLabel(): string {
     return this.text().all;
   }

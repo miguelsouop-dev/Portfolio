@@ -4,7 +4,7 @@ export type ProjectCategory = 'Web' | 'Mobile' | 'Réseau' | 'Pentest' | 'Labs';
 
 export interface Project {
   id: string;
-  title: string;
+  title: string | Record<LanguageType, string>;
   /** Textes traduisibles : clé par langue (fr / en). */
   shortDescription: Record<LanguageType, string>;
   fullDescription: Record<LanguageType, string>;

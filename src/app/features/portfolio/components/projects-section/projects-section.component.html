@@ -31,7 +31,7 @@
         (click)="openProject(project)">
         <!-- Image + overlay -->
         <div class="relative aspect-16/10 overflow-hidden">
-          <img [src]="project.image" [alt]="project.title" loading="lazy"
+          <img [src]="project.image" [alt]="projectTitle(project)" loading="lazy"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             (error)="project.image = 'assets/images/projects/placeholder.jpg'" />
 
@@ -53,7 +53,7 @@
         <!-- Contenu -->
         <div class="p-6 flex flex-col flex-1">
           <div class="flex items-start justify-between gap-4">
-            <h3 class="text-white font-bold text-xl">{{ project.title }}</h3>
+            <h3 class="text-white font-bold text-xl">{{ projectTitle(project) }}</h3>
             <span class="text-xs uppercase tracking-wider text-gray-500  shrink-0">
               {{ categoryLabel(project.category) }}
             </span>

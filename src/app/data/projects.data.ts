@@ -54,7 +54,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
   'Développeur Fullstack': [
     {
       id: 'situr',
-      title: 'SITUR — Transport Urbain',
+      title: {
+        fr: 'SITUR — Transport Urbain',
+        en: 'SITUR — Urban Transport',
+      },
       shortDescription: {
         fr: 'Plateforme Web & Mobile de numérisation du transport urbain : billetterie, scan QR et fleet management.',
         en: 'Web & Mobile platform digitizing urban transport: ticketing, QR scanning and fleet management.',
@@ -94,7 +97,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'vsecurity-web',
-      title: 'VSecurity — Console de Sécurité',
+      title: {
+        fr: 'VSecurity — Console de Sécurité',
+        en: 'VSecurity — Security Console',
+      },
       shortDescription: {
         fr: "Interface web d'analyse de vulnérabilités et de supervision de la posture de sécurité.",
         en: 'Web interface for vulnerability analysis and security posture monitoring.',
@@ -128,7 +134,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'bigbazzar-dashboard',
-      title: 'Big Bazzard',
+      title: {
+        fr: 'Big Bazzar — Tableau de bord',
+        en: 'Big Bazzar — Dashboard',
+      },
       shortDescription: {
         fr: 'Site vitrine et plateforme de présentation de projets pour une entreprise de construction.',
         en: 'Showcase website and project presentation platform for a construction company.',
@@ -162,7 +171,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'carrefour-market',
-      title: 'Carrefour Market',
+      title: {
+        fr: 'Carrefour Market — App Mobile',
+        en: 'Carrefour Market — Mobile App',
+      },
       shortDescription: {
         fr: 'Application mobile de gestion de dépenses et de suivi budgétaire personnel.',
         en: 'Mobile app for expense tracking and personal budget management.',
@@ -195,7 +207,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'situr-mobile',
-      title: 'Situr Mobile',
+      title: {
+        fr: 'SITUR — Application Mobile',
+        en: 'SITUR — Mobile Application',
+      },
       shortDescription: {
         fr: 'Application mobile de billetterie et de suivi des transports SITUR.',
         en: 'Mobile ticketing and transit tracking app for SITUR.',
@@ -230,7 +245,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
   'Ethical Hacker': [
     {
       id: 'pentest-web-vuln-market',
-      title: 'Pentest Applicatif Web — Vuln-Market',
+      title: {
+        fr: 'Pentest Web — Vuln-Market',
+        en: 'Web Pentest — Vuln-Market',
+      },
       shortDescription: {
         fr: "Test d'intrusion complet sur application web : reconnaissance, exploitation et rapport de remédiation.",
         en: 'Complete web application penetration test: reconnaissance, exploitation and remediation report.',
@@ -262,7 +280,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
     },
     {
       id: 'network-audit',
-      title: 'Audit Réseau & Enumeration',
+      title: {
+        fr: 'Audit Réseau & Énumération',
+        en: 'Network Audit & Enumeration',
+      },
       shortDescription: {
         fr: 'Cartographie réseau, découverte d’hôtes et analyse de la posture de sécurité d’une infrastructure.',
         en: 'Network mapping, host discovery and infrastructure security posture analysis.',
@@ -293,7 +314,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
     },
     {
       id: 'raven-1-vm',
-      title: 'Raven 1 machine virtuelle',
+      title: {
+        fr: 'Raven 1 — Machine Virtuelle CTF',
+        en: 'Raven 1 — CTF Virtual Machine',
+      },
       shortDescription: {
         fr: 'Laboratoire virtualisé de simulation d’attaques et d’entraînement offensif (CTF).',
         en: 'Virtualized lab for attack simulation and offensive training (CTF).',
@@ -326,7 +350,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'raven-2-vm',
-      title: 'Raven 2 machine virtuelle',
+      title: {
+        fr: 'Raven 2 — Machine Virtuelle CTF',
+        en: 'Raven 2 — CTF Virtual Machine',
+      },
       shortDescription: {
         fr: 'Poursuite du lab CTF Raven : énumération avancée, pivoting et escalade de privilèges.',
         en: 'Continuation of the Raven CTF lab: advanced enumeration, pivoting and privilege escalation.',
@@ -361,7 +388,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
   'UI/UX Designer': [
     {
       id: 'whatspay-mobile-uiux',
-      title: 'WhatsPay — Mobile App Chat & FinTech Solidaire',
+      title: {
+        fr: 'WhatsPay — Mobile App Chat & FinTech Solidaire',
+        en: 'WhatsPay — Chat & Social FinTech Mobile App',
+      },
       shortDescription: {
         fr: "Conception UI/UX d'une application mobile alliant messagerie instantanée, transferts d'argent rapides, tontines et fonds d'entraide communautaire.",
         en: 'UI/UX design of a mobile app combining instant messaging, fast money transfers, rotating savings (tontines), and mutual aid funds.',
@@ -376,8 +406,8 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
       gallery: [
         'assets/images/projects/whatspay-figma.jpg',
         'assets/images/projects/whatspay-main.png',
-        'assets/images/projects/whatspay-transfer.png',
         'assets/images/projects/whatspay-onboarding.png',
+        'assets/images/projects/whatspay-transfer.png',
       ],
       technologies: ['Figma', 'UI/UX Design', 'Design System', 'FinTech', 'Prototypage'],
       features: {
@@ -400,32 +430,37 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
     },
     {
       id: 'situr-web',
-      title: 'SITUR — Parcours Utilisateur Transport',
+      title: {
+        fr: 'SITUR — Tableau de bord',
+        en: 'SITUR — Dashboard',
+      },
       shortDescription: {
-        fr: 'Conception UI/UX du parcours d’achat et de validation de tickets de transport urbain.',
-        en: 'UI/UX design of the ticket purchase and validation journey for urban transport.',
+        fr: 'Conception UI/UX du tableau de bord web SITUR : supervision de flotte en temps réel, gestion des lignes et statistiques d’exploitation.',
+        en: 'UI/UX design of the SITUR web dashboard: real-time fleet supervision, route management, and operational transit analytics.',
       },
       fullDescription: {
-        fr: "Refonte de l'expérience utilisateur de SITUR autour du parcours d'achat et de validation de ticket. Le travail couvre les personas, les user flows, la conception d'écrans mobiles épurés et un prototype interactif testé auprès d'utilisateurs, avec itérations successives.",
-        en: 'Redesign of the SITUR user experience around the ticket purchase and validation journey. The work covers personas, user flows, clean mobile screen design and an interactive prototype tested with users, with successive iterations.',
+        fr: "Conception ergonomique et visuelle du tableau de bord web d'administration et de supervision SITUR. L'interface offre aux opérateurs de transport urbain une vue centralisée et intuitive : suivi en direct des bus et des trajets, contrôle des validations de tickets, indicateurs clés de performance (KPIs) et gestion des alertes réseau. Le design met l'accent sur la lisibilité des données complexes, l'accessibilité et l'efficacité décisionnelle.",
+        en: 'Ergonomic and visual design of the SITUR web administrative and fleet monitoring dashboard. The interface provides urban transit operators with a centralized, intuitive command view: real-time bus and route tracking, ticket validation logs, key performance indicators (KPIs), and network incident alerts. The design focuses on high data readability, visual hierarchy, and operational decision-making efficiency.',
       },
       category: 'Web',
       roleType: 'UI/UX Designer',
       image: 'assets/images/projects/design-web-situr.jpg',
       gallery: ['assets/images/projects/design-web-situr.jpg'],
-      technologies: ['Figma', 'User Research', 'Prototypage'],
+      technologies: ['Figma', 'UI/UX Design', 'Dashboard', 'Design System', 'Prototypage'],
       features: {
         fr: [
-          'Personas et user flows complets',
-          'Écrans mobiles épurés et accessibles',
-          'Prototype interactif testé auprès d’utilisateurs',
-          'Itérations guidées par les retours',
+          'Supervision de flotte et géolocalisation des bus en temps réel',
+          'Tableaux de bord analytiques et suivi des indicateurs clés (KPIs)',
+          'Gestion centralisée des lignes, arrêts, tarifs et conducteurs',
+          'Système d’alertes d’exploitation et de notifications d’incidents',
+          'Design System complet avec composants web réutilisables sur Figma',
         ],
         en: [
-          'Complete personas and user flows',
-          'Clean and accessible mobile screens',
-          'Interactive prototype tested with users',
-          'Iterations driven by feedback',
+          'Real-time fleet supervision and live GPS bus tracking',
+          'Operational analytics dashboards and KPI performance metrics',
+          'Centralized management of transit lines, stops, fares, and drivers',
+          'Incident alert system and real-time operational notifications',
+          'Comprehensive Design System with reusable web components in Figma',
         ],
       },
       figmaUrl: 'https://www.figma.com/file/example/situr-ux',
@@ -433,7 +468,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'situr-uiux',
-      title: 'SITUR — Design Mobile',
+      title: {
+        fr: 'SITUR — Design Mobile',
+        en: 'SITUR — Mobile App Design',
+      },
       shortDescription: {
         fr: "Design de l'application mobile de gestion des transports interurbains SITUR.",
         en: 'Design of the SITUR intercity transport mobile app.',
@@ -466,7 +504,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
 
     {
       id: 'sm-construction-uiux',
-      title: 'SM Construction — Layout Web',
+      title: {
+        fr: 'SM Construction — Layout Web',
+        en: 'SM Construction — Web Layout',
+      },
       shortDescription: {
         fr: 'Conception du layout et de l’identité visuelle d’un site vitrine BTP moderne.',
         en: 'Layout and visual identity design for a modern construction company website.',
@@ -498,7 +539,10 @@ export const PROJECTS_BY_ROLE: Record<RoleType, Project[]> = {
     },
     {
       id: 'luxura-uiux',
-      title: 'Luxura — Layout Web',
+      title: {
+        fr: 'Luxura — Layout Web',
+        en: 'Luxura — Web Layout',
+      },
       shortDescription: {
         fr: 'Conception du layout et de l’identité visuelle d’un site vitrine premium moderne.',
         en: 'Layout and visual identity design for a modern premium showcase website.',
